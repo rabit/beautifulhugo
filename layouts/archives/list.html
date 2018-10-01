@@ -1,0 +1,42 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/archives.css" />
+<div class="container" role="main">
+    <div class="row" >
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <article role="main" class="blog-post">
+            {{ with .Site.GetPage "section" "post" }}
+            {{ range (where .Data.Pages "Type" "post").GroupByDate "2006" }}
+            <section class="archive">
+                <h2>{{ .Key }}</h2>
+
+                <ul>
+                    {{ range .Pages }}
+                    <li><time>{{ .Date.Format "01-02" }}</time>
+                        
+                        <br><a href="{{ .Permalink }}" class="permalink">{{ .Title }}</a>
+                        
+                        {{ if isset .Params "categories" }}
+                        <br><span class="post-tags">
+                            <span class="prefix">categories:</span> {{ range .Params.categories }}
+                                <a href="/categories/{{ . | urlize }}">{{ . }}</a> ·
+                            {{ end }}
+                        </span>
+                        {{ end }}
+                        {{ if isset .Params "tags" }}
+                        <br><span class="post-tags">
+                            <span class="prefix">tags:</span> {{ range .Params.tags }}
+                                <a href="/tags/{{ . | urlize }}">{{ . }}</a> ·
+                            {{ end }}
+                            </span>
+                        {{ end }}
+                    </li>
+                    {{ end }}
+                </ul>
+            </section>
+            {{ end }}
+            {{ end }}
+            </article>
+        </div>
+    </div>
+</div>
+{{ end }}

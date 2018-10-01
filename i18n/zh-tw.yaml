@@ -27,7 +27,8 @@
   translation: "分鐘"
 - id: words
   translation: "約 {{ .Count }} 字"
-
+- id: View all
+  translation: "全部顯示"
 
 # 404 page
 - id: pageNotFound
