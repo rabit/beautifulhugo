@@ -40,7 +40,12 @@
           {{ end }}
 
           &nbsp;&bull;&nbsp;
-          {{ .Site.LastChange.Format "2006" }}
+          {{- $current := now.Format "2006" }}
+          {{ if ne .Site.Params.since $current }}
+          {{ .Site.Params.since }} -
+          {{ end }}
+          {{- $current }}
+          &copy;
 
           {{ if .Site.Title }}
             &nbsp;&bull;&nbsp;
