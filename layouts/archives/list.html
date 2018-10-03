@@ -22,16 +22,18 @@
                         
                         {{ if isset .Params "categories" }}
                         <br><span class="post-tags">
-                            <span class="prefix">categories:</span> {{ range .Params.categories }}
+                            <span class="prefix">categories:</span> 
+                                <span class="link">{{ range .Params.categories }}
                                 <a href="/categories/{{ . | urlize }}">{{ . }}</a> ·
-                            {{ end }}
+                                {{ end }}</span>
                         </span>
                         {{ end }}
                         {{ if isset .Params "tags" }}
                         <br><span class="post-tags">
-                            <span class="prefix">tags:</span> {{ range .Params.tags }}
+                            <span class="prefix">tags:</span>
+                                <span class="link"> {{ range .Params.tags }}
                                 <a href="/tags/{{ . | urlize }}">{{ . }}</a> ·
-                            {{ end }}
+                                {{ end }}</span>
                             </span>
                         {{ end }}
                     </li>
